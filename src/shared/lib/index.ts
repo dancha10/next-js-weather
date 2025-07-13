@@ -1,0 +1,1 @@
+export { forecastWeatherFactory } from './forecastWeatherFactory';

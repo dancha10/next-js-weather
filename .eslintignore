@@ -1,0 +1,9 @@
+/.git
+/.vscode
+/.idea
+public
+node_modules
+bin
+.eslintrc.js
+*.config.js
+next-env.d.ts
