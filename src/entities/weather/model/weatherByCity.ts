@@ -14,8 +14,10 @@ const $cityInfo = createStore<
 
 sample({
   clock: getWeatherByCity,
+  // @ts-ignore
   filter: (id) => Boolean(cityConfig[id]),
   fn: (id) => {
+    // @ts-ignore
     const { displayName, ...other } = cityConfig[id];
 
     return { ...other, name: displayName };

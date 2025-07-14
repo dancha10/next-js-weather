@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import './styles.scss';
+// import './styles.scss';
 import { getWeatherByCity, $weatherByCity, $pendingWeatherByCity } from '../../model';
 import { useUnit } from 'effector-react';
 import { Skeleton } from '@/shared/ui/Skeleton';
