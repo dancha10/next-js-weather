@@ -9,13 +9,6 @@ export async function getSSRProps() {
   return { props: { values } };
 }
 
-export async function getSSGProps() {
-  const scope = fork();
-  await allSettled(pageOpened, { scope });
-  const values = serialize(scope);
-  return { props: { values } };
-}
-
 export default function MainPage({ values }: { values: any }) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-200 via-blue-200 to-blue-100 flex flex-col items-center pb-12">
@@ -24,3 +17,5 @@ export default function MainPage({ values }: { values: any }) {
     </div>
   );
 }
+
+// export const getServerSideProps = getSSGProps;

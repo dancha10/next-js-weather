@@ -30,3 +30,6 @@ export default function DetailsPage({ id }: { id: string }) {
     </div>
   );
 }
+export const getStaticPaths = getSSGPaths;
+export const getStaticProps = getSSGProps;
+// export const getServerSideProps = getSSRProps;

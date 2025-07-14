@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-// import './styles.scss';
+import styles from './styles.module.scss';
 import { getWeatherByCity, $weatherByCity, $pendingWeatherByCity } from '../../model';
 import { useUnit } from 'effector-react';
 import { Skeleton } from '@/shared/ui/Skeleton';
@@ -30,7 +30,7 @@ export const WeatherInfo: React.FC<{ id: string }> = ({ id }) => {
     return (
       <div className="relative w-full min-h-screen flex items-center justify-center">
         {/* Кнопка назад */}
-        <Link href="/main" className="absolute top-8 left-8 z-20 group">
+        <Link href="/" className="absolute top-8 left-8 z-20 group">
           <div className="flex items-center gap-2 p-2 rounded-full bg-white/70 hover:bg-white/90 shadow-lg backdrop-blur-md transition-all duration-200">
             <svg
               className="w-4 h-4 text-purple-700 group-hover:-translate-x-1 transition-transform"
@@ -81,7 +81,7 @@ export const WeatherInfo: React.FC<{ id: string }> = ({ id }) => {
   return (
     <div className="relative w-full min-h-screen flex items-center justify-center">
       {/* Кнопка назад */}
-      <Link href="/main" className="absolute top-8 left-8 z-20 group">
+      <Link href="/" className="absolute top-8 left-8 z-20 group">
         <div className="flex items-center gap-2 p-2 rounded-full bg-white/70 hover:bg-white/90 shadow-lg backdrop-blur-md transition-all duration-200">
           <svg
             className="w-4 h-4 text-purple-700 group-hover:-translate-x-1 transition-transform"
@@ -111,19 +111,34 @@ export const WeatherInfo: React.FC<{ id: string }> = ({ id }) => {
       {/* Затемнение */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-transparent to-black/40 z-0" />
       {/* Контент */}
-      <div className="relative z-10 max-w-2xl w-full mx-4 rounded-3xl bg-white/20 backdrop-blur-lg shadow-2xl p-10 flex flex-col items-center fade-in">
+      <div
+        className={
+          'relative z-10 max-w-2xl w-full mx-4 rounded-3xl bg-white/20 backdrop-blur-lg shadow-2xl p-10 flex flex-col items-center ' +
+          styles['fade-in']
+        }>
         <div className="flex items-center gap-4 mb-2">
-          <span className="text-6xl drop-shadow-lg pop-in delay-100">
+          <span className={'text-6xl drop-shadow-lg ' + styles['pop-in'] + ' ' + styles['delay-100']}>
             {weather.description ? weatherIcon(weather.description) : null}
           </span>
-          <span className="text-6xl font-extrabold text-white drop-shadow-lg pop-in delay-200">
+          <span
+            className={
+              'text-6xl font-extrabold text-white drop-shadow-lg ' + styles['pop-in'] + ' ' + styles['delay-200']
+            }>
             {weather.temperature}&deg;C
           </span>
         </div>
-        <h1 className="text-3xl font-bold text-white mb-2 drop-shadow-lg text-center fade-in delay-300">
+        <h1
+          className={
+            'text-3xl font-bold text-white mb-2 drop-shadow-lg text-center ' +
+            styles['fade-in'] +
+            ' ' +
+            styles['delay-300']
+          }>
           {weather.name}
         </h1>
-        <div className="text-xl text-white/90 mb-8 text-center fade-in delay-300">{weather.description}</div>
+        <div className={'text-xl text-white/90 mb-8 text-center ' + styles['fade-in'] + ' ' + styles['delay-300']}>
+          {weather.description}
+        </div>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 w-full mt-2">
           <div className="flex flex-col items-center bg-white/30 rounded-2xl p-4 shadow-md backdrop-blur-md">
             <span className="text-3xl mb-1">💨</span>
