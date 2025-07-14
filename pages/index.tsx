@@ -23,5 +23,4 @@ export default function MainPage({ values }: { values: any }) {
       <Cities />
     </div>
   );
-} 
-export const getStaticProps = getSSGProps;
+}

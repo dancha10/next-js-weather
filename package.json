@@ -6,7 +6,7 @@
     "dev": "node scripts/patch-pages.js && node scripts/build-config.js && next dev",
     "build": "node scripts/patch-pages.js && node scripts/build-config.js && next build",
     "build:ssr": "NEXT_USE_SSR=true node scripts/patch-pages.js && NEXT_USE_SSR=true node scripts/build-config.js && next build",
-    "build:static": "NEXT_USE_SSR=false node scripts/patch-pages.js && NEXT_USE_SSR=false node scripts/build-config.js && next build",
+    "build:static": "NEXT_USE_SSR=false node scripts/build-config.js && next build",
     "start": "node scripts/patch-pages.js && node scripts/build-config.js && next start",
     "start:ssr": "NEXT_USE_SSR=true node scripts/patch-pages.js && NEXT_USE_SSR=true node scripts/build-config.js && next start",
     "dev:ssr": "NEXT_USE_SSR=true node scripts/patch-pages.js && NEXT_USE_SSR=true node scripts/build-config.js && next dev",

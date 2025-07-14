@@ -13,13 +13,13 @@ export async function getSSGProps(context: any) {
 export async function getSSGPaths() {
   return {
     paths: [
-        { params: { id: 'moscow' } },
-        { params: { id: 'saint-petersburg' } },
-        { params: { id: 'kazan' } },
-        { params: { id: 'sochi' } },
-        { params: { id: 'yekaterinburg' } },
-      ],
-      fallback: false
+      { params: { id: 'moscow' } },
+      { params: { id: 'saint-petersburg' } },
+      { params: { id: 'kazan' } },
+      { params: { id: 'sochi' } },
+      { params: { id: 'yekaterinburg' } },
+    ],
+    fallback: false,
   };
 }
 
@@ -29,6 +29,4 @@ export default function DetailsPage({ id }: { id: string }) {
       <WeatherInfo id={id} />
     </div>
   );
-} 
-export const getStaticProps = getSSGProps;
-export const getStaticPaths = getSSGPaths;
+}

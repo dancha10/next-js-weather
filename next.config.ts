@@ -8,7 +8,9 @@ const nextConfig: NextConfig = {
     "domains": [
       "images.unsplash.com"
     ]
-  }
+  },
+  "basePath": "/next-js-weather",
+  "assetPrefix": "/next-js-weather/"
 };
 
 export default nextConfig;

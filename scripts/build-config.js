@@ -1,13 +1,15 @@
 const fs = require('fs');
 const path = require('path');
 
+const repo = 'next-js-weather';
+
 // Определяем режим из env
 const isSSR = process.env.NEXT_USE_SSR !== 'false';
 
 // Конфигурация для SSR
 const ssrConfig = {
   images: {
-    domains: ["images.unsplash.com"],
+    domains: ['images.unsplash.com'],
   },
   // SSR конфигурация - без output: 'export'
 };
@@ -18,8 +20,10 @@ const staticConfig = {
   trailingSlash: true,
   images: {
     unoptimized: true,
-    domains: ["images.unsplash.com"],
+    domains: ['images.unsplash.com'],
   },
+  basePath: '/' + repo,
+  assetPrefix: '/' + repo + '/',
 };
 
 // Выбираем конфигурацию
@@ -36,4 +40,4 @@ export default nextConfig;
 fs.writeFileSync('next.config.ts', configContent);
 
 console.log(`✅ Конфигурация создана для ${isSSR ? 'SSR' : 'статики'}`);
-console.log(`📁 Режим: ${isSSR ? 'SSR (getServerSideProps)' : 'Статика (getStaticProps)'}`); 
+console.log(`📁 Режим: ${isSSR ? 'SSR (getServerSideProps)' : 'Статика (getStaticProps)'}`);
