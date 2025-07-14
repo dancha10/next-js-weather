@@ -1,43 +1,33 @@
 const fs = require('fs');
-const path = require('path');
 
 const repo = 'next-js-weather';
 
-// Определяем режим из env
-const isSSR = process.env.NEXT_USE_SSR !== 'false';
+const isSSR = process.env.NEXT_PUBLIC_USE_SSR !== 'false';
 
-// Конфигурация для SSR
-const ssrConfig = {
+const config = `import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
   images: {
-    domains: ['images.unsplash.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        pathname: '/**',
+      },
+    ],
+    ${!isSSR ? 'unoptimized: true,' : ''}
   },
-  // SSR конфигурация - без output: 'export'
+  basePath: '/${repo}',
+  assetPrefix: '/${repo}/',
+  ${!isSSR ? `output: 'export',
+  trailingSlash: true,` : ''}
 };
-
-// Конфигурация для статики
-const staticConfig = {
-  output: 'export',
-  trailingSlash: true,
-  images: {
-    unoptimized: true,
-    domains: ['images.unsplash.com'],
-  },
-  basePath: '/' + repo,
-  assetPrefix: '/' + repo + '/',
-};
-
-// Выбираем конфигурацию
-const config = isSSR ? ssrConfig : staticConfig;
-
-// Записываем в next.config.ts
-const configContent = `import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = ${JSON.stringify(config, null, 2)};
 
 export default nextConfig;
 `;
 
-fs.writeFileSync('next.config.ts', configContent);
+fs.writeFileSync('next.config.ts', config);
+console.log(`✅ Конфиг с remotePatterns для Unsplash записан как JS-выражение`);
 
 console.log(`✅ Конфигурация создана для ${isSSR ? 'SSR' : 'статики'}`);
 console.log(`📁 Режим: ${isSSR ? 'SSR (getServerSideProps)' : 'Статика (getStaticProps)'}`);

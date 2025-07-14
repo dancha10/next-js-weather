@@ -20,33 +20,26 @@ export const WeatherInfo: React.FC<{ id: string }> = ({ id }) => {
   const [weather, getWeather, pending] = useUnit([$weatherByCity, getWeatherByCity, $pendingWeatherByCity]);
 
   useEffect(() => {
-    console.log({ id });
     getWeather(id);
   }, [id]);
-
-  console.log({ weather, pending });
 
   if (pending) {
     return (
       <div className="relative w-full min-h-screen flex items-center justify-center">
-        {/* Кнопка назад */}
-        <Link href="/" className="absolute top-8 left-8 z-20 group">
-          <div className="flex items-center gap-2 p-2 rounded-full bg-white/70 hover:bg-white/90 shadow-lg backdrop-blur-md transition-all duration-200">
-            <svg
-              className="w-4 h-4 text-purple-700 group-hover:-translate-x-1 transition-transform"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              viewBox="0 0 24 24"
-              aria-hidden="true">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-            </svg>
-            <span className="text-base text-gray-700 font-semibold hidden sm:block group-hover:text-purple-700 transition-colors">
-              Назад
-            </span>
-          </div>
+        <Link
+          href="/"
+          className="fixed top-8 left-8 px-6 py-3 rounded-xl bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-white text-base font-semibold shadow-lg hover:scale-105 active:scale-95 transition-all duration-200 border-none outline-none focus:outline-none z-50 flex items-center gap-2">
+          <svg
+            className="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            viewBox="0 0 24 24"
+            aria-hidden="true">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+          </svg>
+          Назад
         </Link>
-        {/* Контент со скелетоном */}
         <div className="relative z-10 max-w-2xl w-full mx-4 rounded-3xl bg-white/20 backdrop-blur-lg shadow-2xl p-10 flex flex-col items-center">
           <div className="flex items-center gap-4 mb-2">
             <Skeleton className="w-16 h-16 rounded-full" />
@@ -80,24 +73,20 @@ export const WeatherInfo: React.FC<{ id: string }> = ({ id }) => {
 
   return (
     <div className="relative w-full min-h-screen flex items-center justify-center">
-      {/* Кнопка назад */}
-      <Link href="/" className="absolute top-8 left-8 z-20 group">
-        <div className="flex items-center gap-2 p-2 rounded-full bg-white/70 hover:bg-white/90 shadow-lg backdrop-blur-md transition-all duration-200">
-          <svg
-            className="w-4 h-4 text-purple-700 group-hover:-translate-x-1 transition-transform"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2.5"
-            viewBox="0 0 24 24"
-            aria-hidden="true">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-          </svg>
-          <span className="text-base text-gray-700 font-semibold hidden sm:block group-hover:text-purple-700 transition-colors">
-            Назад
-          </span>
-        </div>
+      <Link
+        href="/"
+        className="fixed top-8 left-8 px-6 py-3 rounded-xl bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-white text-base font-semibold shadow-lg hover:scale-105 active:scale-95 transition-all duration-200 border-none outline-none focus:outline-none z-50 flex items-center gap-2">
+        <svg
+          className="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          viewBox="0 0 24 24"
+          aria-hidden="true">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+        </svg>
+        Назад
       </Link>
-      {/* Фон через next/image */}
       <div className="absolute inset-0 z-0">
         <Image
           src={weather.image}
@@ -108,9 +97,7 @@ export const WeatherInfo: React.FC<{ id: string }> = ({ id }) => {
           sizes="100vw"
         />
       </div>
-      {/* Затемнение */}
       <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-transparent to-black/40 z-0" />
-      {/* Контент */}
       <div
         className={
           'relative z-10 max-w-2xl w-full mx-4 rounded-3xl bg-white/20 backdrop-blur-lg shadow-2xl p-10 flex flex-col items-center ' +

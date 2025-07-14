@@ -1,16 +1,19 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  "output": "export",
-  "trailingSlash": true,
-  "images": {
-    "unoptimized": true,
-    "domains": [
-      "images.unsplash.com"
-    ]
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        pathname: '/**',
+      },
+    ],
+    
   },
-  "basePath": "/next-js-weather",
-  "assetPrefix": "/next-js-weather/"
+  basePath: '/next-js-weather',
+  assetPrefix: '/next-js-weather/',
+  
 };
 
 export default nextConfig;

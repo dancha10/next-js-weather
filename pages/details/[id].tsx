@@ -1,16 +1,17 @@
 import { WeatherInfo } from '@/entities/weather';
+import { GetServerSideProps, GetStaticProps, GetStaticPaths } from 'next';
 
-export async function getSSRProps(context: any) {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const { id } = context.params as { id: string };
   return { props: { id } };
-}
+};
 
-export async function getSSGProps(context: any) {
+export const _getStaticProps: GetStaticProps = async (context) => {
   const { id } = context.params as { id: string };
   return { props: { id } };
-}
+};
 
-export async function getSSGPaths() {
+export const _getStaticPaths: GetStaticPaths = async () => {
   return {
     paths: [
       { params: { id: 'moscow' } },
@@ -21,15 +22,12 @@ export async function getSSGPaths() {
     ],
     fallback: false,
   };
-}
+};
 
 export default function DetailsPage({ id }: { id: string }) {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-100 via-purple-100 to-yellow-50 flex flex-col items-center pb-12">
+    <div className="h-full flex flex-col items-center">
       <WeatherInfo id={id} />
     </div>
   );
 }
-export const getStaticPaths = getSSGPaths;
-export const getStaticProps = getSSGProps;
-// export const getServerSideProps = getSSRProps;

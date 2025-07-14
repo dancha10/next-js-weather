@@ -8,10 +8,8 @@ export const forecastWeatherFactory = () =>
     if (!res.ok) throw new Error('Ошибка запроса погоды');
     const data = await res.json();
     const current = data.current_weather;
-    // Берём ближайший час для влажности и давления
     const humidity = data.hourly?.relative_humidity_2m?.[0] ?? null;
     const pressure = data.hourly?.surface_pressure?.[0] ?? null;
-    // Описание по weathercode (можно расширить)
     const code = current.weathercode;
     const description = weatherCodeToDesc(code);
     return {
