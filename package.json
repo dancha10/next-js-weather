@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "cross-env NEXT_PUBLIC_USE_SSR=true node scripts/toggle-ssr.js --ssr && cross-env NEXT_PUBLIC_USE_SSR=true node scripts/build-config.js && cross-env NEXT_PUBLIC_USE_SSR=true next dev",
-    "build": "cross-env NEXT_PUBLIC_USE_SSR=true node scripts/toggle-ssr.js --ssr && cross-env NEXT_PUBLIC_USE_SSR=true node scripts/build-config.js && cross-env NEXT_PUBLIC_USE_SSR=true next build",
-    "build:static": "cross-env NEXT_PUBLIC_USE_SSR=false node scripts/toggle-ssr.js && cross-env NEXT_PUBLIC_USE_SSR=false node scripts/build-config.js && cross-env NEXT_PUBLIC_USE_SSR=false next build",
-    "build:ssr": "cross-env NEXT_PUBLIC_USE_SSR=true node scripts/toggle-ssr.js --ssr && cross-env NEXT_PUBLIC_USE_SSR=true node scripts/build-config.js && cross-env NEXT_PUBLIC_USE_SSR=true next build",
-    "dev:ssr": "cross-env NEXT_PUBLIC_USE_SSR=true node scripts/toggle-ssr.js --ssr && cross-env NEXT_PUBLIC_USE_SSR=true node scripts/build-config.js && cross-env NEXT_PUBLIC_USE_SSR=true next dev",
-    "dev:static": "cross-env NEXT_PUBLIC_USE_SSR=false node scripts/toggle-ssr.js && cross-env NEXT_PUBLIC_USE_SSR=false node scripts/build-config.js && cross-env NEXT_PUBLIC_USE_SSR=false next dev",
+    "dev": "cross-env NEXT_PUBLIC_USE_SSR=true node scripts/toggle-ssr.js --ssr && cross-env NEXT_PUBLIC_USE_SSR=true next dev",
+    "build": "cross-env NEXT_PUBLIC_USE_SSR=true node scripts/toggle-ssr.js --ssr && cross-env NEXT_PUBLIC_USE_SSR=true next build",
+    "build:static": "cross-env NEXT_PUBLIC_USE_SSR=false node scripts/toggle-ssr.js && cross-env NEXT_PUBLIC_USE_SSR=false next build",
+    "build:ssr": "cross-env NEXT_PUBLIC_USE_SSR=true node scripts/toggle-ssr.js --ssr && cross-env NEXT_PUBLIC_USE_SSR=true next build",
+    "dev:ssr": "cross-env NEXT_PUBLIC_USE_SSR=true node scripts/toggle-ssr.js --ssr && cross-env NEXT_PUBLIC_USE_SSR=true next dev",
+    "dev:static": "cross-env NEXT_PUBLIC_USE_SSR=false node scripts/toggle-ssr.js && cross-env NEXT_PUBLIC_USE_SSR=false next dev",
     "lint": "next lint"
   },
   "dependencies": {

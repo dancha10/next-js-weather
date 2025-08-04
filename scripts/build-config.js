@@ -19,15 +19,18 @@ const nextConfig: NextConfig = {
   },
   basePath: '/${repo}',
   assetPrefix: '/${repo}/',
-  ${!isSSR ? `output: 'export',
-  trailingSlash: true,` : ''}
+  ${
+    !isSSR
+      ? `output: 'export',
+  trailingSlash: true,`
+      : ''
+  }
 };
 
 export default nextConfig;
 `;
 
 fs.writeFileSync('next.config.ts', config);
-console.log(`✅ Конфиг с remotePatterns для Unsplash записан как JS-выражение`);
 
 console.log(`✅ Конфигурация создана для ${isSSR ? 'SSR' : 'статики'}`);
 console.log(`📁 Режим: ${isSSR ? 'SSR (getServerSideProps)' : 'Статика (getStaticProps)'}`);

@@ -1,4 +1,6 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
+
+const isSSR = process.env.NEXT_PUBLIC_USE_SSR === 'true';
 
 const nextConfig: NextConfig = {
   images: {
@@ -9,11 +11,16 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
     ],
-    
+    unoptimized: isSSR ? undefined : true,
   },
   basePath: '/next-js-weather',
   assetPrefix: '/next-js-weather/',
-  
+  ...(isSSR
+    ? {}
+    : {
+        output: 'export',
+        trailingSlash: true,
+      }),
 };
 
 export default nextConfig;
